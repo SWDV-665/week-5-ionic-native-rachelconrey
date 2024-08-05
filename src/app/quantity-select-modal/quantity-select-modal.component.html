@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ item?.name ? 'Edit Item' : 'Add Item' }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cancel()">Cancel</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form (ngSubmit)="save()">
+    <ion-item>
+      <ion-label position="stacked">Name</ion-label>
+      <ion-input [(ngModel)]="item.name" name="name" placeholder="Enter item name" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Quantity</ion-label>
+      <ion-select [(ngModel)]="item.quantity" name="quantity" placeholder="Select Quantity" required>
+        <ion-select-option *ngFor="let quantity of quantities" [value]="quantity">{{ quantity }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-footer class="ion-no-border">
+      <ion-toolbar>
+        <ion-buttons slot="end">
+          <ion-button type="submit">Save</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-footer>
+  </form>
+</ion-content>
